@@ -8,7 +8,7 @@ docker run --name some-mongo -p 27017:27017 --network MBTANetwork -d mongo
 
 docker build --no-cache -t debeziummodule16 -f DebeziumCDC/Dockerfile ./DebeziumCDC
 
-docker run -it --name debeziumcontainer --network MBTANetwork debeziummodule16 /bin/bash
+docker run -it --name debeziumcontainer --network MBTANetwork -d debeziummodule16
 
 # 在 shell 裡面
 apt update

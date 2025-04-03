@@ -25,9 +25,9 @@ public class DebeziumListener {
     public DebeziumListener(Configuration customerConnectorConfiguration) {
 
         this.debeziumEngine = DebeziumEngine.create(ChangeEventFormat.of(Connect.class))
-            .using(customerConnectorConfiguration.asProperties())
-            .notifying(this::handleChangeEvent)
-            .build();
+                .using(customerConnectorConfiguration.asProperties())
+                .notifying(this::handleChangeEvent)
+                .build();
 
         // this.customerService = customerService;
     }
@@ -35,12 +35,10 @@ public class DebeziumListener {
     private void handleChangeEvent(RecordChangeEvent<SourceRecord> sourceRecordRecordChangeEvent) {
         SourceRecord sourceRecord = sourceRecordRecordChangeEvent.record();
 
-
         MongoDB mongoDB = new MongoDB();
         mongoDB.testConnection();
         // Use the insertRecord method to insert a record inside the MongoDB database.
-        // Pass sourceRecord.value().toString()
-        
+        mongoDB.insertRecord(sourceRecord.value().toString());
 
         System.out.println("Key = '" + sourceRecord.key() + "' value = '" + sourceRecord.value() + "'");
     }
@@ -58,4 +56,3 @@ public class DebeziumListener {
     }
 
 }
-
