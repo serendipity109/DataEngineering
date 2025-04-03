@@ -1,0 +1,359 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "bearing": 135,
+        "carriages": [],
+        "current_status": "IN_TRANSIT_TO",
+        "current_stop_sequence": 11,
+        "direction_id": 1,
+        "label": "3298",
+        "latitude": 42.35106,
+        "longitude": -71.08965,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:39-04:00"
+      },
+      "id": "y3298",
+      "links": { "self": "/vehicles/y3298" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "77", "type": "stop" } },
+        "trip": { "data": { "id": "66645089", "type": "trip" } }
+      },
+      "type": "vehicle"
+    },
+    {
+      "attributes": {
+        "bearing": 299,
+        "carriages": [],
+        "current_status": "IN_TRANSIT_TO",
+        "current_stop_sequence": 21,
+        "direction_id": 1,
+        "label": "3289",
+        "latitude": 42.33152924,
+        "longitude": -71.077875199,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:44-04:00"
+      },
+      "id": "y3289",
+      "links": { "self": "/vehicles/y3289" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "10101", "type": "stop" } },
+        "trip": { "data": { "id": "66645085", "type": "trip" } }
+      },
+      "type": "vehicle"
+    },
+    {
+      "attributes": {
+        "bearing": 290,
+        "carriages": [],
+        "current_status": "IN_TRANSIT_TO",
+        "current_stop_sequence": 21,
+        "direction_id": 0,
+        "label": "3261",
+        "latitude": 42.36929991,
+        "longitude": -71.11088781,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:44-04:00"
+      },
+      "id": "y3261",
+      "links": { "self": "/vehicles/y3261" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "107", "type": "stop" } },
+        "trip": { "data": { "id": "66644641", "type": "trip" } }
+      },
+      "type": "vehicle"
+    },
+    {
+      "attributes": {
+        "bearing": 135,
+        "carriages": [],
+        "current_status": "STOPPED_AT",
+        "current_stop_sequence": 19,
+        "direction_id": 1,
+        "label": "3260",
+        "latitude": 42.33369,
+        "longitude": -71.07368,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:39-04:00"
+      },
+      "id": "y3260",
+      "links": { "self": "/vehicles/y3260" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "856", "type": "stop" } },
+        "trip": { "data": { "id": "66645086", "type": "trip" } }
+      },
+      "type": "vehicle"
+    },
+    {
+      "attributes": {
+        "bearing": 316,
+        "carriages": [],
+        "current_status": "STOPPED_AT",
+        "current_stop_sequence": 17,
+        "direction_id": 0,
+        "label": "3202",
+        "latitude": 42.3628895,
+        "longitude": -71.09934181,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:48-04:00"
+      },
+      "id": "y3202",
+      "links": { "self": "/vehicles/y3202" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "101", "type": "stop" } },
+        "trip": { "data": { "id": "66644643", "type": "trip" } }
+      },
+      "type": "vehicle"
+    },
+    {
+      "attributes": {
+        "bearing": 180,
+        "carriages": [],
+        "current_status": "STOPPED_AT",
+        "current_stop_sequence": 1,
+        "direction_id": 0,
+        "label": "1921",
+        "latitude": 42.32979,
+        "longitude": -71.08376,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:40-04:00"
+      },
+      "id": "y1921",
+      "links": { "self": "/vehicles/y1921" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "64", "type": "stop" } },
+        "trip": { "data": { "id": "66651421", "type": "trip" } }
+      },
+      "type": "vehicle"
+    },
+    {
+      "attributes": {
+        "bearing": 261,
+        "carriages": [],
+        "current_status": "STOPPED_AT",
+        "current_stop_sequence": 10,
+        "direction_id": 0,
+        "label": "1886",
+        "latitude": 42.3415884,
+        "longitude": -71.08316014,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:42-04:00"
+      },
+      "id": "y1886",
+      "links": { "self": "/vehicles/y1886" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "188", "type": "stop" } },
+        "trip": { "data": { "id": "66651411", "type": "trip" } }
+      },
+      "type": "vehicle"
+    },
+    {
+      "attributes": {
+        "bearing": 159,
+        "carriages": [],
+        "current_status": "STOPPED_AT",
+        "current_stop_sequence": 4,
+        "direction_id": 0,
+        "label": "1855",
+        "latitude": 42.33222593,
+        "longitude": -71.07971727,
+        "occupancy_status": "MANY_SEATS_AVAILABLE",
+        "revenue": "REVENUE",
+        "speed": null,
+        "updated_at": "2025-04-03T07:01:18-04:00"
+      },
+      "id": "y1855",
+      "links": { "self": "/vehicles/y1855" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "stop": { "data": { "id": "6", "type": "stop" } },
+        "trip": { "data": { "id": "66651416", "type": "trip" } }
+      },
+      "type": "vehicle"
+    }
+  ],
+  "included": [
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "A01-5",
+        "direction_id": 0,
+        "headsign": "Harvard",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66644641",
+      "links": { "self": "/trips/66644641" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-0", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010138", "type": "shape" } }
+      },
+      "type": "trip"
+    },
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "A01-7",
+        "direction_id": 0,
+        "headsign": "Harvard",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66644643",
+      "links": { "self": "/trips/66644643" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-0", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010138", "type": "shape" } }
+      },
+      "type": "trip"
+    },
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "A01-14",
+        "direction_id": 1,
+        "headsign": "Nubian",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66645085",
+      "links": { "self": "/trips/66645085" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-1", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010140", "type": "shape" } }
+      },
+      "type": "trip"
+    },
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "A01-1",
+        "direction_id": 1,
+        "headsign": "Nubian",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66645086",
+      "links": { "self": "/trips/66645086" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-1", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010140", "type": "shape" } }
+      },
+      "type": "trip"
+    },
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "A01-3",
+        "direction_id": 1,
+        "headsign": "Nubian",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66645089",
+      "links": { "self": "/trips/66645089" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-1", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010140", "type": "shape" } }
+      },
+      "type": "trip"
+    },
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "C01-10",
+        "direction_id": 0,
+        "headsign": "Harvard",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66651411",
+      "links": { "self": "/trips/66651411" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-0", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010138", "type": "shape" } }
+      },
+      "type": "trip"
+    },
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "C01-12",
+        "direction_id": 0,
+        "headsign": "Harvard",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66651416",
+      "links": { "self": "/trips/66651416" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-0", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010138", "type": "shape" } }
+      },
+      "type": "trip"
+    },
+    {
+      "attributes": {
+        "bikes_allowed": 1,
+        "block_id": "C01-16",
+        "direction_id": 0,
+        "headsign": "Harvard",
+        "name": "",
+        "revenue": "REVENUE",
+        "wheelchair_accessible": 1
+      },
+      "id": "66651421",
+      "links": { "self": "/trips/66651421" },
+      "relationships": {
+        "route": { "data": { "id": "1", "type": "route" } },
+        "route_pattern": { "data": { "id": "1-_-0", "type": "route_pattern" } },
+        "service": { "data": { "id": "WinterWeekday", "type": "service" } },
+        "shape": { "data": { "id": "010138", "type": "shape" } }
+      },
+      "type": "trip"
+    }
+  ],
+  "jsonapi": { "version": "1.0" }
+}
