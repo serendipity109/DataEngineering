@@ -1,0 +1,47 @@
+
+MBTA 公車 API 資料結構說明 - 端點：https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip
+
+JSON 主結構：
+------------
+- data：公車資料陣列
+- included：包含的行程（trip）資料陣列（若使用 include=trip）
+
+每筆 Vehicle（公車）資料（位於 data 陣列）：
+-----------------------------------------
+- id（字串）：車輛唯一識別碼
+- type（字串）：資料類型，固定為 "vehicle"
+- attributes（屬性）：
+    - bearing（整數）：車輛當前的行駛方向（0-359 度）
+    - current_status（字串）：車輛狀態，例如 "IN_TRANSIT_TO"、"STOPPED_AT"
+    - current_stop_sequence（整數）：行程中目前停靠站的順序編號
+    - direction_id（整數）：行駛方向（0 或 1）
+    - label（字串）：車輛標籤或編號
+    - latitude（浮點數）：車輛目前的緯度
+    - longitude（浮點數）：車輛目前的經度
+    - occupancy_status（字串）：乘客擁擠狀態，例如 "MANY_SEATS_AVAILABLE"
+    - updated_at（字串）：此筆資料最後更新時間（ISO 8601 格式）
+- relationships（關聯）：
+    - trip：
+        - data：
+            - id：行程 ID
+            - type：固定為 "trip"
+    - route：
+        - data：
+            - id：路線 ID，例如 "1"
+            - type：固定為 "route"
+
+每筆 Trip（行程）資料（位於 included 陣列，type 為 trip）：
+-----------------------------------------------------
+- id（字串）：行程的唯一識別碼
+- type（字串）：固定為 "trip"
+- attributes（屬性）：
+    - headsign（字串）：公車上的目的地顯示文字
+    - direction_id（整數）：方向識別碼（與車輛一致）
+    - block_id（字串）：同一區段（block）下的行程群組 ID
+    - bicycle_accessible（整數）：是否可搭載自行車（1：可，0：不可）
+    - wheelchair_accessible（整數）：是否為無障礙設施（1：是，0：否）
+
+備註：
+-----
+- 時間格式皆為 ISO 8601，含時區資訊（例如 "2025-04-03T20:02:19-04:00"）
+- 此 API 遵循 JSON:API 規範，included 資源可能被多筆資料共用

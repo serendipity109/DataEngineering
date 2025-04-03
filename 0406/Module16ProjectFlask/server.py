@@ -1,5 +1,5 @@
 from threading import Timer
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import time
 import json
 import MBTAApiClient
@@ -9,11 +9,12 @@ import MBTAApiClient
 # ------------------
 
 # Initialize buses list by doing an API call to the MBTA database below
-buses = None
+buses = MBTAApiClient.callMBTAApi()
 
 #Update the function below
 def update_data():
-    buses = None
+    global buses
+    buses = MBTAApiClient.callMBTAApi()
 
 def status():
     for bus in buses:
@@ -41,7 +42,7 @@ def root():
 # root route - landing page
 @app.route('/location')
 def location():
-    return (json.dumps(buses))
+    return jsonify(buses)
 
 
 # start server - note the port is 3000

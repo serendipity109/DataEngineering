@@ -1,7 +1,7 @@
 docker network create MBTANetwork
 
-docker build -t mysqlmbtamasterimg -f mysqlDocker/Dockerfile ./mysqlDocker
+docker build --no-cache -t mysqlmbtamasterimg -f mysqlDocker/Dockerfile ./mysqlDocker
 
-docker run --name mysqlserver --network MBTANetwork -d mysqlmbtamasterimg
+docker run --name mysqlserver -p 3306:3306 --network MBTANetwork -d mysqlmbtamasterimg
 
-docker run --name some-mongo --network MBTANetwork -d mongo
+docker run --name some-mongo -p 27017:27017 --network MBTANetwork -d mongo
