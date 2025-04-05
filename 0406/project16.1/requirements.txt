@@ -1,0 +1,6 @@
+mysql-connector-python
+pymysql
+flask
+pandas
+haversine
+matplotlib

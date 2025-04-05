@@ -1,0 +1,12 @@
+docker network create MBTANetwork
+
+docker run -p 27017:27017 --name some-mongo --network MBTANetwork  -d mongo 
+
+docker run --name javamaven --network MBTANetwork  -dti --rm -p 8080:8080 maven:3.9.9-eclipse-temurin-21 bash
+
+apt update
+apt install nano -y
+
+cd /java-quick-start/src/main/java/com/mongodb/quickstart
+touch ReadCDC.java
+nano ReadCDC.java

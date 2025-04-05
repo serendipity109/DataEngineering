@@ -6,10 +6,17 @@ docker run --name mysqlserver -p 3306:3306 --network MBTANetwork -d mysqlmbtamas
 
 docker run --name some-mongo -p 27017:27017 --network MBTANetwork -d mongo
 
+python Module16ProjectFlask/server.py
+
 docker build --no-cache -t debeziummodule16 -f DebeziumCDC/Dockerfile ./DebeziumCDC
 
-docker run -it --name debeziumcontainer --network MBTANetwork -d debeziummodule16
+docker run -it --name debeziumcontainer --network MBTANetwork debeziummodule16 bash
 
 # 在 shell 裡面
 apt update
 apt install nano -y
+
+nano /tmp/src/main/java/mit/edu/tv/listener/MongoDB.java
+
+cd /tmp
+mvn spring-boot:run

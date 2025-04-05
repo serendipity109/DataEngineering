@@ -1,7 +1,6 @@
 from threading import Timer
 from flask import Flask, render_template, jsonify
 import time
-import json
 import MBTAApiClient
 
 # ------------------

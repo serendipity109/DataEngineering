@@ -9,17 +9,20 @@ def insertMBTARecord(mbtaList):
     )
 
     mycursor = mydb.cursor()
-    # 插入所有欄位的 SQL 語句
     sql = """
     INSERT INTO mbta_buses (
-        id, latitude, longitude, bearing, current_status,
+        id, trip_id, direction_id, label, stop_id,
+        latitude, longitude, bearing, current_status,
         current_stop_sequence, occupancy_status, updated_at
-    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     for mbtaDict in mbtaList:
-        # 準備對應的值
         val = (
             mbtaDict['id'],
+            mbtaDict.get('trip_id'),
+            mbtaDict.get('direction_id'),
+            mbtaDict.get('label'),
+            mbtaDict.get('stop_id'),
             mbtaDict['latitude'],
             mbtaDict['longitude'],
             mbtaDict.get('bearing'),

@@ -4,4 +4,3 @@ COPY app /tmp/
 
 WORKDIR /tmp/
 
-CMD ["mvn", "spring-boot:run"]
