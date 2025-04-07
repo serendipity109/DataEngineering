@@ -52,21 +52,42 @@ books = [
         "title": "Lean Thinking",
         "year": 1996,
     },
+    {
+        "id": 4,
+        "author": "J.K. Rowling",
+        "country": "UK",
+        "language": "English",
+        "title": "Harry Potter",
+        "year": 1997,
+    },
+    {
+        "id": 5,
+        "author": "Haruki Murakami",
+        "country": "Japan",
+        "language": "Japanese",
+        "title": "Norwegian Wood",
+        "year": 1987,
+    },
 ]
 
 users = [
     {"username": "testuser", "password": "testuser", "role": "admin"},
     {"username": "John", "password": "John", "role": "reader"},
     {"username": "Anne", "password": "Anne", "role": "admin"},
+    {"username": "Adam", "password": "Adam", "role": "admin"},
+    {"username": "Kat", "password": "Kat", "role": "admin"},
 ]
 
 
-# def admin_required(fn):
-#    @wraps(fn)
-#    def wrapper(*args, **kwargs):
+def admin_required(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        claim = get_jwt()
+        if claim["role"] != "admin":
+            return jsonify(msg='Admins only!!'), 403
+        return fn(*args, **kwargs)
 
-#           return fn(*args, **kwargs)
-#    return wrapper
+    return wrapper
 
 
 def checkUser(username, password):
@@ -90,8 +111,8 @@ def login():
         if validUser != None:
             # set JWT token
 
-            user_claims = {"role": validUser["roles"]}
-            access_token = create_access_token(username, user_claims=user_claims)
+            user_claims = {"role": validUser["role"]}
+            access_token = create_access_token(username, additional_claims=user_claims)
 
             response = make_response(render_template("index.html", title="books", username=username, books=books))
             response.status_code = 200

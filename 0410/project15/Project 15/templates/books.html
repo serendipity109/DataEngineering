@@ -1,16 +1,16 @@
 {% extends "index.html"%}
 {%block content %}
-    <ul class="list-group">
+<ul class="list-group">
     {% for book in books %}
-        <li class="list-group-item">
-            {{book['author']}},	
-            {{book['title']}},
-            {{book['country']}},
-            {{book['language']}},
-            {{book['pages']}},
-            {{book['year']}}
-            
-        </li>
+    <li class="list-group-item">
+        <img src="{{ url_for('static', filename='image' ~ book['id'] ~ '.png') }}" width="50">
+        {{book['author']}},
+        {{book['title']}},
+        {{book['country']}},
+        {{book['language']}},
+        {{book['pages']}},
+        {{book['year']}}
+    </li>
     {%endfor%}
-    </ul>
+</ul>
 {%endblock%}
