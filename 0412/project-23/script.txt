@@ -1,0 +1,5 @@
+# 19.2
+docker-compose up -d
+
+username/password
+airflow/airflow
