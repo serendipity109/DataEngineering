@@ -10,3 +10,7 @@ apt install nano -y
 cd /java-quick-start/src/main/java/com/mongodb/quickstart
 touch ReadCDC.java
 nano ReadCDC.java
+
+# nano 語法
+ctrl O -> enter 存檔
+ctrl X 離開
