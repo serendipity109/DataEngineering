@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>D3 Bubble Chart Example</title>
+    <!-- 引入 D3 (此例使用 v5，能用 then() 語法，但我們不需 .then() 也可) -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 先引入 words.js，裡面定義 scores 這個全域變數 -->
+    <script src="words.js"></script>
+
+    <script>
+      // 將 scores 物件轉成 d3.hierarchy() 需要的格式
+      //   也就是 {children: [{Name: <key>, Count: <value>}, ...]}
+      var dataset = {
+        children: Object.keys(scores).map(function (key) {
+          return { Name: key, Count: scores[key] };
+        }),
+      };
+
+      console.log("轉換後的資料結構:", dataset);
+
+      // 設定畫布尺寸
+      var width = 600;
+      var height = 600;
+
+      // 建立 SVG 畫布
+      var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+
+      // 設定顏色比例尺
+      var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+      // 建立打包佈局 (pack layout)
+      var pack = d3
+        .pack()
+        .size([width - 2, height - 2])
+        .padding(10);
+
+      // 建立階層結構，並以 Count 數值為節點大小
+      var root = d3.hierarchy(dataset).sum(function (d) {
+        return d.Count;
+      });
+
+      // 計算每個葉節點的座標 (x, y) 與半徑 (r)
+      pack(root);
+
+      // 建立 <g> 群組來放每一個泡泡
+      var node = svg
+        .selectAll("g")
+        .data(root.leaves())
+        .enter()
+        .append("g")
+        .attr("transform", function (d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        });
+
+      // 繪製泡泡 (圓形)
+      node
+        .append("circle")
+        .attr("r", function (d) {
+          return d.r;
+        })
+        .style("fill", function (d, i) {
+          return color(i);
+        });
+
+      // 在泡泡中加入文字（單字名稱）
+      node
+        .append("text")
+        .attr("dy", ".2em")
+        .style("text-anchor", "middle")
+        .text(function (d) {
+          // 若泡泡很小，字數可截斷，以免文字太擠
+          return d.data.Name.substring(0, Math.floor(d.r / 3));
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", function (d) {
+          return d.r / 5;
+        })
+        .attr("fill", "white");
+
+      // 再加入第二行文字（數值頻率）
+      node
+        .append("text")
+        .attr("dy", "1.3em")
+        .style("text-anchor", "middle")
+        .text(function (d) {
+          return d.data.Count;
+        })
+        .attr("font-family", "Gill Sans, Gill Sans MT")
+        .attr("font-size", function (d) {
+          return d.r / 5;
+        })
+        .attr("fill", "white");
+    </script>
+  </body>
+</html>

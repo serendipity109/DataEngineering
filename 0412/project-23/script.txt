@@ -1,5 +1,14 @@
 # 19.2
+docker-compose --version
+
 docker-compose up -d
 
 username/password
 airflow/airflow
+
+開始trigger
+
+docker exec -it airflow-docker-airflow-worker-1 /bin/bash
+ls
+
+docker cp airflow-docker-airflow-worker-1:/opt/airflow/words.json code_visualization/words.json
