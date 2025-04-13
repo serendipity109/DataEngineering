@@ -1,0 +1,14 @@
+docker network create NifiNetwork
+
+docker run --name nificontainer -p 8080:8080 --network NifiNetwork -d apache/nifi:1.13.2
+
+docker exec -it nificontainer bash
+
+cd /opt/nifi/nifi-current
+mkdir input output
+ls -l
+
+docker cp Activity17_1.xlsx nificontainer:/opt/nifi/nifi-current/input
+
+http://localhost:8080/nifi
+
