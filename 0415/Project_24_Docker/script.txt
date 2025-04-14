@@ -1,0 +1,3 @@
+mkdir .mytb-data
+mkdir .mytb-logs
+dir /a
