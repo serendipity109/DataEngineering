@@ -1,3 +1,6 @@
 mkdir .mytb-data
 mkdir .mytb-logs
 dir /a
+
+# 要在conda prompt，node-rdkafka會看python版本
+npm install node-rdkafka
