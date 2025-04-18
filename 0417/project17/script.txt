@@ -1,7 +1,7 @@
 # 17.1
 docker network create NifiNetwork
 
-docker run --name nificontainer -p 8080:8080 --network NifiNetwork -d apache/nifi:1.13.2
+docker run --name nificontainer -p 8080:8080 --network NifiNetwork -d apache/nifi:latest
 
 docker exec -it nificontainer bash
 
@@ -15,7 +15,7 @@ http://localhost:8080/nifi
 
 
 # 17.2
-docker run --name my_sql -e MYSQL_ROOT_PASSWORD=MyNewPass -p 3300:3306 -d mysql
+docker run --name my_sql -e MYSQL_ROOT_PASSWORD=MyNewPass --network NifiNetwork -p 3300:3306 -d mysql
 
 CREATE DATABASE IF NOT EXISTS usgs;
 USE usgs;
@@ -54,3 +54,8 @@ cd current-nifi
 mkdir data
 
 docker cp ./Activity17-2.csv nificontainer:/opt/nifi/current-nifi/data
+
+docker cp ./mysql-connector-j-9.3.0.jar nificontainer:/opt/nifi/nifi-current/lib/
+
+# 17.3
+docker run -p 27017:27017 --name some-mongo --network NifiNetwork  -d mongo
