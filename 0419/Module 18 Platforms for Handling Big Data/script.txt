@@ -19,8 +19,19 @@ export YARN_RESOURCEMANAGER_USER="root"
 export YARN_NODEMANAGER_USER="root"
 
 
+cd /home/testprogram/testprogram
 javac -d . SalesMapper.java SalesCountryReducer.java SalesCountryDriver.java
+```
+javac：Java Compiler（編譯器）。
+
+-d .：指定 編譯後的 class 檔案要輸出到目前目錄（.）。
+
+SalesMapper.java SalesCountryReducer.java SalesCountryDriver.java：這三個是要編譯的原始碼檔案。
+
+javac 這步是把 .java 原始碼 ➔ .class 可以執行的 Java bytecode
+```
 
 jar cfm ProductSalePerCountry.jar Manifest.txt SalesCountry/*.class
+# 把剛剛編譯好的 .class 檔案，打包成一個 .jar 檔案（Java Archive）。
 
 $HADOOP_HOME/bin/hadoop jar ProductSalePerCountry.jar /inputMapReduce /mapreduce_output_sales
