@@ -1,0 +1,3 @@
+curl https://raw.githubusercontent.com/bitnami/containers/refs/heads/main/bitnami/spark/docker-compose.yml -o docker-compose.yml
+
+docker cp ./departuredelays.csv bitnami-spark-1:/tmp/departuredelays.csv
