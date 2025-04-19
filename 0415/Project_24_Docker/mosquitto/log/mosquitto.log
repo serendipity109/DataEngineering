@@ -26,3 +26,9 @@
 1744896991: Opening ipv4 listen socket on port 1883.
 1744896991: Opening ipv6 listen socket on port 1883.
 1744896991: mosquitto version 2.0.21 running
+1744979943: mosquitto version 2.0.21 starting
+1744979943: Config loaded from /mosquitto/config/mosquitto.conf.
+1744979943: Opening ipv4 listen socket on port 1883.
+1744979943: Opening ipv6 listen socket on port 1883.
+1744979943: mosquitto version 2.0.21 running
+1744990588: mosquitto version 2.0.21 terminating

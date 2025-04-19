@@ -1,0 +1,26 @@
+# 18.2
+docker cp ./pg15.txt namenode:/input
+
+curl -O https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/2.7.1/hadoop-mapreduce-examples-2.7.1.jar
+
+hadoop jar hadoop-mapreduce-examples-2.7.1.jar wordcount /input /output
+
+# final
+docker cp testprogram/ namenode:/home
+
+hdfs dfs -ls /inputMapReduce
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+export CLASSPATH="$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.2.1.jar:$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-client-common-3.2.1.jar:$HADOOP_HOME/share/hadoop/common/hadoop-common-3.2.1.jar:~/testprogram/SalesCountry/*:$HADOOP_HOME/lib/*"
+export HDFS_NAMENODE_USER="root"
+export HDFS_DATANODE_USER="root"
+export HDFS_SECONDARYNAMENODE_USER="root"
+export YARN_RESOURCEMANAGER_USER="root"
+export YARN_NODEMANAGER_USER="root"
+
+
+javac -d . SalesMapper.java SalesCountryReducer.java SalesCountryDriver.java
+
+jar cfm ProductSalePerCountry.jar Manifest.txt SalesCountry/*.class
+
+$HADOOP_HOME/bin/hadoop jar ProductSalePerCountry.jar /inputMapReduce /mapreduce_output_sales
