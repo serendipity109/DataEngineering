@@ -1,3 +1,110 @@
 curl https://raw.githubusercontent.com/bitnami/containers/refs/heads/main/bitnami/spark/docker-compose.yml -o docker-compose.yml
 
-docker cp ./departuredelays.csv bitnami-spark-1:/tmp/departuredelays.csv
+docker cp ./data/departuredelays.csv bitnami-spark-1:/departuredelays.csv
+
+# 19.2
+
+在 cli 裡面灌 pyspark
+
+開 python
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("DepartureDelays").getOrCreate()
+
+spark.sql("""
+    SELECT *
+    FROM delays_table
+    WHERE delay > 120 AND origin = 'SFO' AND destination = 'ORD'
+    ORDER BY delay DESC
+""").show(10)
+
+spark.sql("""
+    SELECT delay, origin, destination,
+        CASE
+            WHEN delay > 360 THEN 'Very Long Delays'
+            WHEN delay BETWEEN 120 AND 360 THEN 'Long Delays'
+            WHEN delay BETWEEN 60 AND 120 THEN 'Short Delays'
+            WHEN delay BETWEEN 0 AND 60 THEN 'Tolerable Delays'
+            WHEN delay = 0 THEN 'No Delays'
+            ELSE 'Early'
+        END AS delay_length
+    FROM delays_table
+""").show(10)
+
+spark.sql("""
+    SELECT MAX(delay) AS max_delay
+    FROM delays_table
+""").show()
+
+spark.sql("""
+    SELECT MIN(delay) AS min_delay
+    FROM delays_table
+""").show()
+
+# 19.3
+df = (spark.read.format("csv")
+      .option("inferSchema", "true")
+      .option("header", "true")
+      .load(activity19_3_data))
+
+df.createOrReplaceTempView("activity19_3_table")
+
+spark.sql("""
+    SELECT *
+    FROM activity19_3_table
+    WHERE origin = 'JFK' AND destination = 'SEA' AND delay > 90
+    ORDER BY delay DESC
+""").show(10)
+
+spark.sql("""
+    SELECT *
+    FROM activity19_3_table
+    WHERE origin = 'SFO' AND destination = 'MIA' AND delay < 60
+    ORDER BY delay ASC
+""").show(5)
+
+
+# 19.4
+curl -L -o docker-compose.yaml https://airflow.apache.org/docs/apache-airflow/2.1.1/docker-compose.yaml
+
+http://localhost:8080/
+
+
+# Final
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("Assignment19.3").getOrCreate()
+
+docker cp ./data/departuredelays.csv bitnami-spark-1:/departuredelays.csv
+
+assignment19_3_data = "/departuredelays.csv"
+
+df = (spark.read.format("csv")
+    .option("inferSchema", "true")
+    .option("header", "true")
+    .load(assignment19_3_data))
+
+df.createOrReplaceTempView("assignment19_3_table")
+
+spark.sql("""
+    SELECT *
+    FROM assignment19_3_table
+    WHERE origin = 'PHL' AND destination = 'DFW' AND delay > 150
+    ORDER BY delay DESC
+""").show(15)
+
+spark.sql("""
+    SELECT *
+    FROM assignment19_3_table
+    WHERE distance < 200
+    ORDER BY distance ASC
+""").show(10)
+
+spark.sql("""
+    SELECT *
+    FROM assignment19_3_table
+    WHERE distance > 600
+    ORDER BY distance ASC
+""").show(10)

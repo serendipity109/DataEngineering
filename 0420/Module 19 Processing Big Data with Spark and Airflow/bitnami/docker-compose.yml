@@ -12,7 +12,7 @@ services:
       - SPARK_SSL_ENABLED=no
       - SPARK_USER=spark
     ports:
-      - "8080:8080"
+      - '8080:8080'
   spark-worker:
     image: docker.io/bitnami/spark:3.5
     environment:
