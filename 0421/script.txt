@@ -1,0 +1,11 @@
+安裝 https://graphviz.org/download/
+
+按 Win + S 搜尋「環境變數」 → 點「編輯系統環境變數」。
+
+點「環境變數 (Environment Variables)」。
+
+在「系統變數」裡找 Path，點「編輯」。
+
+加入 Graphviz 安裝的 bin 資料夾路徑，像這樣：
+
+C:\Program Files\Graphviz\bin
