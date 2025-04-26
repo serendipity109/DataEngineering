@@ -17,7 +17,7 @@ while True:
     #clientsocket.send(bytes(msg, 'utf-8'))
 # start pushing messages every 3 seconds
     for i in range(20):
-        time.sleep(0)
+        time.sleep(3)
         msg = f"The time is {time.thread_time()}"
         msg = f'{len(msg):<{HEADER}}' + msg  # what is this doing?
         clientsocket.send(bytes(msg, 'utf-8'))

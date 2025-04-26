@@ -9,3 +9,5 @@
 加入 Graphviz 安裝的 bin 資料夾路徑，像這樣：
 
 C:\Program Files\Graphviz\bin
+
+conda install -c conda-forge dask distributed
