@@ -1,0 +1,15 @@
+cd 0428/14/Module14FinalAssignment
+docker network create CDCFinalAssignment
+
+docker build -t mysqlmasterimg .
+
+docker run -d --name mysqlmasterdb --network CDCFinalAssignment -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysqlmasterimg
+
+cd 0428/14/Debezium
+
+docker build --no-cache -t debeziumimg .
+
+docker run -it --name debeziumcontainer --network CDCFinalAssignment debeziumimg bash
+
+apt update
+apt install nano -y
