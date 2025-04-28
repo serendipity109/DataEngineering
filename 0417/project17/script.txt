@@ -1,7 +1,9 @@
 # 17.1
 docker network create NifiNetwork
 
-docker run --name nificontainer -p 8080:8080 --network NifiNetwork -d apache/nifi:latest
+docker run --name nificontainer -p 8080:8080 --network NifiNetwork -d apache/nifi:1.13.2
+
+docker run --name nificontainer --network NifiNetwork -e SINGLE_USER_CREDENTIALS_USERNAME=admin -e SINGLE_USER_CREDENTIALS_PASSWORD=MySecurePass123 -e NIFI_WEB_HTTPS_HOST="0.0.0.0" -p 8443:8443 -d apache/nifi:latest
 
 docker exec -it nificontainer bash
 
@@ -11,11 +13,29 @@ ls -l
 
 docker cp Activity17_1.xlsx nificontainer:/opt/nifi/nifi-current/input
 
-http://localhost:8080/nifi
+https://localhost:8443/nifi/
 
 
 # 17.2
-docker run --name my_sql -e MYSQL_ROOT_PASSWORD=MyNewPass --network NifiNetwork -p 3300:3306 -d mysql
+docker run --name my_sql -e MYSQL_ROOT_PASSWORD=MyNewPass --network NifiNetwork -p 3306:3306 -d mysql
+
+# in docker cli
+cd /opt/nifi
+mkdir current-nifi
+cd current-nifi
+mkdir data
+
+docker cp ./Activity17-2.csv nificontainer:/opt/nifi/current-nifi/data
+
+# 登進去 mysql
+mysql -u root -pMyNewPass
+
+# 創造 nifi user
+CREATE DATABASE IF NOT EXISTS usgs;
+CREATE USER IF NOT EXISTS 'nifi'@'%' IDENTIFIED BY 'nifi_pass';
+GRANT ALL PRIVILEGES ON usgs.* TO 'nifi'@'%';
+FLUSH PRIVILEGES;
+EOF
 
 CREATE DATABASE IF NOT EXISTS usgs;
 USE usgs;
@@ -47,15 +67,33 @@ CREATE TABLE earthquakes (
 );
 
 
-# in docker cli
-cd /opt/nifi
-mkdir current-nifi
-cd current-nifi
-mkdir data
+# 看 mysql 版本
+SELECT VERSION()
 
-docker cp ./Activity17-2.csv nificontainer:/opt/nifi/current-nifi/data
+# 下載對應版本的 mysql driver
+https://downloads.mysql.com/archives/c-j/
 
-docker cp ./mysql-connector-j-9.3.0.jar nificontainer:/opt/nifi/nifi-current/lib/
+docker cp ./mysql-connector-j-9.2.0.jar nificontainer:/opt/nifi/nifi-current/lib/
 
-# 17.3
-docker run -p 27017:27017 --name some-mongo --network NifiNetwork  -d mongo
+# nifi 建立 mysql 連線
+right click -> Controller Services -> + -> DBCPConnectionPool
+Database Connection URL
+jdbc:mysql://my_sql:3306/usgs?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+Database Driver Class Name
+com.mysql.cj.jdbc.Driver
+Database Driver Location(s)
+/opt/nifi/nifi-current/lib/mysql-connector-j-9.2.0.jar
+Database User
+nifi
+Password
+nifi_pass
+
+
+# final
+# in cli
+cd /opt/nifi/nifi-current
+mkdir input
+mkdir output
+docker cp ./movies.xlsx nificontainer:/opt/nifi/nifi-current/input
+
+docker cp ./movies.csv nificontainer:/opt/nifi/current-nifi/data
