@@ -1,0 +1,9 @@
+python my_sql_container.py create
+
+python my_mongo_container.py create
+
+python my_redis_container.py create
+
+python my_cassandra_container.py create
+
+docker rm -f final_mysql_container final_mongo_container final_redis_container final_cassandra_container

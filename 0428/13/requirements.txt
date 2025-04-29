@@ -1,0 +1,5 @@
+docker 
+mysql-connector-python
+pymongo
+redis
+cassandra-driver
