@@ -1,5 +1,7 @@
+cryptography
 docker 
 mysql-connector-python
 pymongo
+pymysql
 redis
 cassandra-driver
