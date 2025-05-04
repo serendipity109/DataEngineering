@@ -1,1 +1,20 @@
 docker run --name cassandra -p 9042:9042 -d cassandra
+
+# cli
+cqlsh
+
+USE books;
+
+INSERT INTO book (book_id, name, author, year_published, number_of_pages)
+VALUES (1, 'The Mystery of Capital', 'Hernando de Soto', 1970, 209);
+
+INSERT INTO book (book_id, name, author, year_published, number_of_pages)
+VALUES (2, 'Fairy Tales', 'Hans Christian Andersen', 1836, 784);
+
+INSERT INTO book (book_id, name, author, year_published, number_of_pages)
+VALUES (3, 'The Divine Comedy', 'Dante Alighieri', 1315, 928);
+
+INSERT INTO book (book_id, name, author, year_published, number_of_pages)
+VALUES (4, 'Romeo and Juliet', 'William Shakespeare', 1597, 100);
+
+cqlsh:books> SELECT * FROM book;
