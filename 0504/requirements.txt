@@ -1,1 +1,6 @@
 flask-swagger-ui
+cmake 
+scipy
+gymnasium[all]
+pygame
+numpy==1.23.5
