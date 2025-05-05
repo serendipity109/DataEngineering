@@ -1,6 +1,8 @@
 flask-swagger-ui
 cmake 
 scipy
+scikit-learn
 gymnasium[all]
 pygame
+pandas
 numpy==1.23.5
